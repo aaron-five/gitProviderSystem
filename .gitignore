@@ -2,7 +2,7 @@
 .env
 
 #configuracion de sequelize
-.sequelizerc
+
 
 #node modules
 /node_modules
