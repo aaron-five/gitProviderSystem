@@ -19,6 +19,15 @@ if (config.use_env_variable) {
     config.password,
     config
   );
+
+  console.log(
+    "database: ",
+    config.database,
+    "username: ",
+    config.username,
+    "password: ",
+    config.password
+  );
 }
 
 fs.readdirSync(__dirname)
