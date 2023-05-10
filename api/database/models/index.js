@@ -26,7 +26,9 @@ if (config.use_env_variable) {
     "username: ",
     config.username,
     "password: ",
-    config.password
+    config.password,
+    "enviroment",
+    env
   );
 }
 
