@@ -8,7 +8,9 @@ module.exports = {
     port: globalConstants.DB_PORT,
     dialect: "postgres",
     dialectOptions: {
-      ssl: true,
+      ssl: {
+        require: true,
+      },
     },
   },
   test: {
@@ -19,7 +21,9 @@ module.exports = {
     port: globalConstants.DB_PORT,
     dialect: "postgres",
     dialectOptions: {
-      ssl: false,
+      ssl: {
+        require: true,
+      },
     },
   },
   production: {
@@ -30,7 +34,9 @@ module.exports = {
     port: globalConstants.DB_PORT,
     dialect: "postgres",
     dialectOptions: {
-      ssl: false,
+      ssl: {
+        require: true,
+      },
     },
   },
 };
