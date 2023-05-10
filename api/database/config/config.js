@@ -7,9 +7,7 @@ module.exports = {
     host: globalConstants.DB_HOST,
     port: globalConstants.DB_PORT,
     dialect: "postgres",
-    dialectOptions: {
-      ssl: false,
-    },
+    ssl: true,
   },
   test: {
     username: globalConstants.DB_USERNAME,
