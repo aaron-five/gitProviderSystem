@@ -2,21 +2,27 @@
 const { Model } = require("sequelize");
 
 module.exports = (sequelize, DataTypes) => {
-  let Shop = sequelize.define("shop", {
-    id: {
-      type: DataTypes.INTEGER,
-      primaryKey: true,
-      autoIncrement: true,
+  let Shop = sequelize.define(
+    "shop",
+    {
+      id: {
+        type: DataTypes.INTEGER,
+        primaryKey: true,
+        autoIncrement: true,
+      },
+      name: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
+      isDelete: {
+        type: DataTypes.BOOLEAN,
+        defaultValue: false,
+      },
     },
-    name: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-    isDelete: {
-      type: DataTypes.BOOLEAN,
-      defaultValue: false,
-    },
-  });
+    {
+      timestamps: false,
+    }
+  );
 
   Shop.associate = (models) => {
     Shop.hasMany(models.shop_products, {
