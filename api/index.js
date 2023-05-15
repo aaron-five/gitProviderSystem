@@ -1,8 +1,10 @@
 const express = require("express");
 const routerConfig = require("./routes/index.routes");
 const globalConstants = require("./const/globalConstants.js");
+const cors = require("cors");
 
 const configurationApi = (app) => {
+  app.use(cors());
   app.use(express.json());
   app.use(express.urlencoded({ extended: true }));
   return;
