@@ -87,7 +87,7 @@ module.exports = {
       include: [
         {
           model: models.shop_products,
-          attributes: ["id", "name", "price"],
+          attributes: ["id", "name", "price", "isDelete"],
         },
       ],
     });
