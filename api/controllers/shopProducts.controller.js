@@ -14,7 +14,7 @@ module.exports = {
   getShopProduct: async (req, res) => {
     try {
       const { id } = req.params;
-      const shopProducts = awaitmodels.shop_products.findOne({
+      const shopProducts = await models.shop_products.findOne({
         where: {
           id,
         },
