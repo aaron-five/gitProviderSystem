@@ -81,15 +81,9 @@ module.exports = {
   //Find all products of one shop
   getShopAndProducts: async (req, res) => {
     const { id } = req.params;
-    const shopProducts = await models.shop.findOne({
-      where: { id: id },
-      attributes: ["id", "name"],
-      include: [
-        {
-          model: models.shop_products,
-          attributes: ["id", "name", "price", "isDelete"],
-        },
-      ],
+    const shopProducts = await models.shop_products.findAll({
+      where: { shopId: id },
+      attributes: ["id", "name", "price", "isDelete"],
     });
     res.json(shopProducts);
   },
