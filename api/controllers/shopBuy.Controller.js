@@ -61,6 +61,12 @@ module.exports = {
       const shopBuys = req.body;
       const Detalle = shopBuys.Detalle;
 
+      if (Object.keys(Detalle).length === 0) {
+        return res.status(500).json({
+          message: "Debe ingresar productos para poder hacer la compra",
+        });
+      }
+
       //Create shop buy
       const newShopBuy = await models.shop_buys.create({
         shopId: shopBuys.shopId,
@@ -100,6 +106,12 @@ module.exports = {
       //data
       const shopBuyId = req.params.id;
       const Detalle = req.body.Detalle;
+
+      if (Object.keys(Detalle).length === 0) {
+        return res.status(500).json({
+          message: "Debe ingresar productos para poder editar la compra",
+        });
+      }
 
       //find a shopbuy
       const shopBuy = await models.shop_buys.findOne({
@@ -156,6 +168,23 @@ module.exports = {
 
       //Return the results to the client
       res.json(results);
+    } catch (error) {
+      return res.status(500).json({ message: error.message });
+    }
+  },
+  getShopBuyDetailByShopBuyId: async (req, res) => {
+    try {
+      const { id } = req.params;
+      const shopBuysDetail = await models.shop_buys_details.findAll({
+        where: { shopBuyId: id },
+      });
+      if (Object.keys(shopBuysDetail).length === 0) {
+        return res.status(500).json({
+          message: "No se encontraron detalles de compra",
+        });
+      }
+
+      res.json(shopBuysDetail);
     } catch (error) {
       return res.status(500).json({ message: error.message });
     }

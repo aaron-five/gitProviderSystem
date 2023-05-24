@@ -87,4 +87,18 @@ module.exports = {
     });
     res.json(shopProducts);
   },
+  getShopBuyByShopId: async (req, res) => {
+    try {
+      const { id } = req.params;
+      const shopBuys = await models.shop_buys.findAll({
+        where: { shopId: id },
+      });
+      if (!shopBuys) {
+        return res.status(404).json({ message: "Buy does not exists" });
+      }
+      res.json(shopBuys);
+    } catch (error) {
+      return res.status(500).json({ message: error.message });
+    }
+  },
 };

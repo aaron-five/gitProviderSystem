@@ -7,5 +7,6 @@ router.post("/", shopController.createShop);
 router.put("/edit/:id", shopController.updateShop);
 router.delete("/delete/:id", shopController.deleteShop);
 router.get("/:id/products", shopController.getShopAndProducts);
+router.get("/:id/buys", shopController.getShopBuyByShopId);
 
 module.exports = router;
