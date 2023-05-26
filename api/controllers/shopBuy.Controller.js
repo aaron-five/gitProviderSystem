@@ -59,7 +59,7 @@ module.exports = {
     try {
       //receive the data
       const shopBuys = req.body;
-      const Detalle = shopBuys.Detalle;
+      const Detalle = shopBuys.details;
 
       if (Object.keys(Detalle).length === 0) {
         return res.status(500).json({
@@ -80,6 +80,9 @@ module.exports = {
         newShopBuy.id
       );
       if (DetailsTotal === false) {
+        await models.shop_buys.destroy({
+          where: { id: newShopBuy.id },
+        });
         return res.status(500).json({
           message: "El producto no existe dentro de la base de datos",
         });

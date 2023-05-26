@@ -13,7 +13,7 @@ module.exports = {
       for (const element of Detalle) {
         //Verify if products already exists in the database
         const shopProducts = await models.shop_products.findOne({
-          where: { id: element.shopProductId },
+          where: { id: element.productId },
           attributes: ["id", "name", "price"],
           transaction,
         });
